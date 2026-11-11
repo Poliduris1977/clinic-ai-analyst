@@ -1,0 +1,36 @@
+Revenue ERP := SUM(qItems[revenue])
+
+Revenue 1C :=
+CALCULATE(
+    SUM(qPostings[amount]),
+    qPostings[credit] = "90.01",
+    qPostings[debit] IN {"62.01", "62.02"}
+)
+
+Revenue Diff := [Revenue ERP] - [Revenue 1C]
+
+Doctors := CALCULATE(DISTINCTCOUNT(qVisits[doctor_id]), NOT ISBLANK(qVisits[doctor_id]))
+
+Doctor Months :=
+COUNTROWS(
+    DISTINCT(
+        SELECTCOLUMNS(
+            FILTER(qVisits, NOT ISBLANK(qVisits[doctor_id])),
+            "Doc", qVisits[doctor_id],
+            "Month", FORMAT(qVisits[visit_date], "yyyy-MM")
+        )
+    )
+)
+
+Visits Without Doctor :=
+CALCULATE(
+    COUNTROWS(qVisits),
+    ISBLANK(qVisits[doctor_id])
+) + 0
+
+Profit Before Tax :=
+[Revenue 1C] -
+CALCULATE(
+    SUM(qPostings[amount]),
+    qPostings[debit] IN {"90.02", "90.07", "90.08"}
+)

@@ -1,0 +1,748 @@
+{
+ "version": 1,
+ "description": "Контрольные значения Excel-трека (Power Query / Power Pivot). Значения ищутся по имени листа и заголовку, не по адресу ячейки. Допуск tol: суммы в рублях точно (0), Profit Before Tax и LTV12 до 0,01. Находки правил проверяются по количеству и суммам, идентификаторы записей не используются.",
+ "snapshots": {
+  "dirty": "reconciliation_dirty_snap.xlsx",
+  "corrected": "reconciliation_corrected_snap.xlsx"
+ },
+ "checks": [
+  {
+   "id": "meta.dataset",
+   "title": "Meta: имя набора данных в снапшоте",
+   "kind": "meta",
+   "sheet": "Meta",
+   "key": "dataset",
+   "expected": {
+    "dirty": "dirty",
+    "corrected": "corrected"
+   },
+   "tol": 0
+  },
+  {
+   "id": "controls.revenue_erp",
+   "title": "Controls: Выручка ERP",
+   "kind": "kv",
+   "sheet": "Controls",
+   "key_column": "Metric",
+   "value_column": "Value",
+   "key": "revenue_erp",
+   "expected": {
+    "dirty": 825309700,
+    "corrected": 825211700
+   },
+   "tol": 0
+  },
+  {
+   "id": "controls.revenue_1c",
+   "title": "Controls: Выручка 1С",
+   "kind": "kv",
+   "sheet": "Controls",
+   "key_column": "Metric",
+   "value_column": "Value",
+   "key": "revenue_1c",
+   "expected": {
+    "dirty": 825377396,
+    "corrected": 825211796
+   },
+   "tol": 0
+  },
+  {
+   "id": "controls.revenue_diff",
+   "title": "Controls: Расхождение ERP - 1С",
+   "kind": "kv",
+   "sheet": "Controls",
+   "key_column": "Metric",
+   "value_column": "Value",
+   "key": "revenue_diff",
+   "expected": {
+    "dirty": -67696,
+    "corrected": -96
+   },
+   "tol": 0
+  },
+  {
+   "id": "controls.cells_material",
+   "title": "Controls: Существенных расхождений (> 1 000 ₽)",
+   "kind": "kv",
+   "sheet": "Controls",
+   "key_column": "Metric",
+   "value_column": "Value",
+   "key": "cells_material",
+   "expected": {
+    "dirty": 10,
+    "corrected": 0
+   },
+   "tol": 0
+  },
+  {
+   "id": "controls.no_doctor_count",
+   "title": "Controls: Правило: визиты без врача",
+   "kind": "kv",
+   "sheet": "Controls",
+   "key_column": "Metric",
+   "value_column": "Value",
+   "key": "no_doctor_count",
+   "expected": {
+    "dirty": 2,
+    "corrected": 0
+   },
+   "tol": 0
+  },
+  {
+   "id": "controls.price_below_count",
+   "title": "Controls: Правило: цена ниже прайса",
+   "kind": "kv",
+   "sheet": "Controls",
+   "key_column": "Metric",
+   "value_column": "Value",
+   "key": "price_below_count",
+   "expected": {
+    "dirty": 2,
+    "corrected": 0
+   },
+   "tol": 0
+  },
+  {
+   "id": "controls.duplicates_count",
+   "title": "Controls: Правило: дубли",
+   "kind": "kv",
+   "sheet": "Controls",
+   "key_column": "Metric",
+   "value_column": "Value",
+   "key": "duplicates_count",
+   "expected": {
+    "dirty": 2,
+    "corrected": 0
+   },
+   "tol": 0
+  },
+  {
+   "id": "model.revenue_erp",
+   "title": "Model: Revenue ERP",
+   "kind": "model",
+   "sheet": "Model",
+   "measure": "Revenue ERP",
+   "expected": {
+    "dirty": 825309700,
+    "corrected": 825211700
+   },
+   "tol": 0
+  },
+  {
+   "id": "model.revenue_1c",
+   "title": "Model: Revenue 1C",
+   "kind": "model",
+   "sheet": "Model",
+   "measure": "Revenue 1C",
+   "expected": {
+    "dirty": 825377396,
+    "corrected": 825211796
+   },
+   "tol": 0
+  },
+  {
+   "id": "model.revenue_diff",
+   "title": "Model: Revenue Diff",
+   "kind": "model",
+   "sheet": "Model",
+   "measure": "Revenue Diff",
+   "expected": {
+    "dirty": -67696,
+    "corrected": -96
+   },
+   "tol": 0
+  },
+  {
+   "id": "model.doctors",
+   "title": "Model: Doctors",
+   "kind": "model",
+   "sheet": "Model",
+   "measure": "Doctors",
+   "expected": {
+    "dirty": 43,
+    "corrected": 43
+   },
+   "tol": 0
+  },
+  {
+   "id": "model.doctor_months",
+   "title": "Model: Doctor Months",
+   "kind": "model",
+   "sheet": "Model",
+   "measure": "Doctor Months",
+   "expected": {
+    "dirty": 479,
+    "corrected": 479
+   },
+   "tol": 0
+  },
+  {
+   "id": "model.visits_without_doctor",
+   "title": "Model: Visits Without Doctor",
+   "kind": "model",
+   "sheet": "Model",
+   "measure": "Visits Without Doctor",
+   "expected": {
+    "dirty": 2,
+    "corrected": 0
+   },
+   "tol": 0
+  },
+  {
+   "id": "model.profit_before_tax",
+   "title": "Model: Profit Before Tax",
+   "kind": "model",
+   "sheet": "Model",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "dirty": 158211755.89,
+    "corrected": 158046155.89
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "recon.rows",
+   "title": "Recon: строк (3 клиники x 12 месяцев)",
+   "kind": "table_rows",
+   "sheet": "Recon",
+   "nonempty_column": "clinic_id",
+   "expected": {
+    "dirty": 36,
+    "corrected": 36
+   },
+   "tol": 0
+  },
+  {
+   "id": "recon.sum_erp",
+   "title": "Recon: сумма ERP",
+   "kind": "column_sum",
+   "sheet": "Recon",
+   "column": "ERP",
+   "expected": {
+    "dirty": 825309700,
+    "corrected": 825211700
+   },
+   "tol": 0
+  },
+  {
+   "id": "recon.sum_c1",
+   "title": "Recon: сумма C1 (1С)",
+   "kind": "column_sum",
+   "sheet": "Recon",
+   "column": "C1",
+   "expected": {
+    "dirty": 825377396,
+    "corrected": 825211796
+   },
+   "tol": 0
+  },
+  {
+   "id": "recon.sum_diff",
+   "title": "Recon: сумма Diff",
+   "kind": "column_sum",
+   "sheet": "Recon",
+   "column": "Diff",
+   "expected": {
+    "dirty": -67696,
+    "corrected": -96
+   },
+   "tol": 0
+  },
+  {
+   "id": "recon.material_count",
+   "title": "Recon: ячеек с Material = истина",
+   "kind": "count_true",
+   "sheet": "Recon",
+   "column": "Material",
+   "expected": {
+    "dirty": 10,
+    "corrected": 0
+   },
+   "tol": 0
+  },
+  {
+   "id": "recon.material_cells",
+   "title": "Recon: существенные ячейки (клиника|период: Diff)",
+   "kind": "recon_material_cells",
+   "sheet": "Recon",
+   "expected": {
+    "dirty": {
+     "C01|2025-02": -212400,
+     "C01|2025-03": 370200,
+     "C01|2025-04": -297000,
+     "C01|2025-07": -10200,
+     "C02|2025-08": 157700,
+     "C02|2025-09": -157700,
+     "C02|2025-10": 143500,
+     "C03|2025-05": -35000,
+     "C03|2025-06": -96700,
+     "C03|2025-11": 70000
+    },
+    "corrected": {}
+   },
+   "tol": 0
+  },
+  {
+   "id": "registry.rows",
+   "title": "Registry: строк",
+   "kind": "table_rows",
+   "sheet": "Registry",
+   "nonempty_column": "Rule",
+   "expected": {
+    "dirty": 16,
+    "corrected": 0
+   },
+   "tol": 0
+  },
+  {
+   "id": "registry.by_rule",
+   "title": "Registry: строк по правилам",
+   "kind": "rule_counts",
+   "sheet": "Registry",
+   "expected": {
+    "dirty": {
+     "NoDoctor": 2,
+     "PriceBelowList": 2,
+     "Duplicates": 2,
+     "revenue_cell": 10
+    },
+    "corrected": {}
+   },
+   "tol": 0
+  },
+  {
+   "id": "rule.no_doctor",
+   "title": "qRule_NoDoctor: суммы находок",
+   "kind": "rule_amounts",
+   "sheet": "qRule_NoDoctor",
+   "expected": {
+    "dirty": [
+     55000,
+     65700
+    ],
+    "corrected": []
+   },
+   "tol": 0
+  },
+  {
+   "id": "rule.price_below_list",
+   "title": "qRule_PriceBelowList: суммы находок",
+   "kind": "rule_amounts",
+   "sheet": "qRule_PriceBelowList",
+   "expected": {
+    "dirty": [
+     -35000,
+     -10200
+    ],
+    "corrected": []
+   },
+   "tol": 0
+  },
+  {
+   "id": "rule.duplicates",
+   "title": "qRule_Duplicates: суммы находок",
+   "kind": "rule_amounts",
+   "sheet": "qRule_Duplicates",
+   "expected": {
+    "dirty": [
+     70000,
+     73200
+    ],
+    "corrected": []
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.rows",
+   "title": "Cohorts: когорт",
+   "kind": "table_rows",
+   "sheet": "Cohorts",
+   "nonempty_column": "CohortMonth",
+   "expected": {
+    "dirty": 12,
+    "corrected": 12
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.patients_total",
+   "title": "Cohorts: пациентов всего",
+   "kind": "column_sum",
+   "sheet": "Cohorts",
+   "column": "PatientCount",
+   "expected": {
+    "dirty": 27924,
+    "corrected": 27924
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.revenue_total",
+   "title": "Cohorts: выручка всего",
+   "kind": "column_sum",
+   "sheet": "Cohorts",
+   "column": "SumRevenue",
+   "expected": {
+    "dirty": 494797800,
+    "corrected": 494762800
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.2025-01.patients",
+   "title": "Cohorts: январская когорта, пациентов",
+   "kind": "cohort_cell",
+   "sheet": "Cohorts",
+   "cohort": "2025-01",
+   "column": "PatientCount",
+   "expected": {
+    "dirty": 1287,
+    "corrected": 1287
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.2025-04.patients",
+   "title": "Cohorts: апрельская когорта, пациентов",
+   "kind": "cohort_cell",
+   "sheet": "Cohorts",
+   "cohort": "2025-04",
+   "column": "PatientCount",
+   "expected": {
+    "dirty": 2154,
+    "corrected": 2154
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.2025-04.revenue",
+   "title": "Cohorts: апрельская когорта, выручка",
+   "kind": "cohort_cell",
+   "sheet": "Cohorts",
+   "cohort": "2025-04",
+   "column": "SumRevenue",
+   "expected": {
+    "dirty": 52648600,
+    "corrected": 52683600
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.2025-08.patients",
+   "title": "Cohorts: августовская когорта, пациентов",
+   "kind": "cohort_cell",
+   "sheet": "Cohorts",
+   "cohort": "2025-08",
+   "column": "PatientCount",
+   "expected": {
+    "dirty": 2227,
+    "corrected": 2227
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.2025-08.revenue",
+   "title": "Cohorts: августовская когорта, выручка",
+   "kind": "cohort_cell",
+   "sheet": "Cohorts",
+   "cohort": "2025-08",
+   "column": "SumRevenue",
+   "expected": {
+    "dirty": 36065500,
+    "corrected": 35995500
+   },
+   "tol": 0
+  },
+  {
+   "id": "cohorts.2025-01.ltv12",
+   "title": "Cohorts: LTV12 январской когорты",
+   "kind": "cohort_cell",
+   "sheet": "Cohorts",
+   "cohort": "2025-01",
+   "column": "LTV12",
+   "expected": {
+    "dirty": 34101.48,
+    "corrected": 34101.48
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "pivot.erp_by_month",
+   "title": "Pivot: Revenue ERP по месяцам, общий итог (12 значений)",
+   "kind": "pivot_series",
+   "sheet": "Pivot",
+   "row": "Общий итог",
+   "measure": "Revenue ERP",
+   "periods": [
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12"
+   ],
+   "expected": {
+    "dirty": [
+     34309900,
+     53707500,
+     59198600,
+     65091700,
+     47669300,
+     54328600,
+     68649700,
+     63741800,
+     91309600,
+     98081500,
+     86948800,
+     102272700
+    ],
+    "corrected": [
+     34309900,
+     53707500,
+     59198600,
+     65018500,
+     47704300,
+     54328600,
+     68659900,
+     63741800,
+     91309600,
+     98081500,
+     86878800,
+     102272700
+    ]
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot.erp_total",
+   "title": "Pivot: итог Revenue ERP за год",
+   "kind": "pivot_cell",
+   "sheet": "Pivot",
+   "row": "Общий итог",
+   "period": "TOTAL",
+   "measure": "Revenue ERP",
+   "expected": {
+    "dirty": 825309700,
+    "corrected": 825211700
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot.doctors_total",
+   "title": "Pivot: итог Doctors за год",
+   "kind": "pivot_cell",
+   "sheet": "Pivot",
+   "row": "Общий итог",
+   "period": "TOTAL",
+   "measure": "Doctors",
+   "expected": {
+    "dirty": 43,
+    "corrected": 43
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.rev1c_total",
+   "title": "Pivot1C: итог Revenue 1C за год",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "TOTAL",
+   "measure": "Revenue 1C",
+   "expected": {
+    "dirty": 825377396,
+    "corrected": 825211796
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.pbt_total",
+   "title": "Pivot1C: итог Profit Before Tax за год",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "TOTAL",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "dirty": 158211755.89,
+    "corrected": 158046155.89
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "pivot1c.dirty_c01_feb_rev1c",
+   "title": "Pivot1C: Невский, февраль, Revenue 1C (dirty)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Клиника Невский",
+   "period": "2025-02",
+   "measure": "Revenue 1C",
+   "expected": {
+    "dirty": 33717400
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.corrected_all.2025-01.rev1c",
+   "title": "Pivot1C: все клиники, 2025-01, Revenue 1C (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "2025-01",
+   "measure": "Revenue 1C",
+   "expected": {
+    "corrected": 34309938
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.corrected_all.2025-01.pbt",
+   "title": "Pivot1C: все клиники, 2025-01, Profit Before Tax (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "2025-01",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "corrected": 118768.61
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "pivot1c.corrected_all.2025-02.rev1c",
+   "title": "Pivot1C: все клиники, 2025-02, Revenue 1C (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "2025-02",
+   "measure": "Revenue 1C",
+   "expected": {
+    "corrected": 53707498
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.corrected_all.2025-02.pbt",
+   "title": "Pivot1C: все клиники, 2025-02, Profit Before Tax (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "2025-02",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "corrected": 8072290.3
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "pivot1c.corrected_all.2025-03.rev1c",
+   "title": "Pivot1C: все клиники, 2025-03, Revenue 1C (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "2025-03",
+   "measure": "Revenue 1C",
+   "expected": {
+    "corrected": 59198611
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.corrected_all.2025-03.pbt",
+   "title": "Pivot1C: все клиники, 2025-03, Profit Before Tax (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Общий итог",
+   "period": "2025-03",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "corrected": 9179258.98
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "pivot1c.corrected_c01.2025-01.rev1c",
+   "title": "Pivot1C: Невский, 2025-01, Revenue 1C (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Клиника Невский",
+   "period": "2025-01",
+   "measure": "Revenue 1C",
+   "expected": {
+    "corrected": 19192303
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.corrected_c01.2025-01.pbt",
+   "title": "Pivot1C: Невский, 2025-01, Profit Before Tax (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Клиника Невский",
+   "period": "2025-01",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "corrected": 473945.61
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "pivot1c.corrected_c01.2025-02.rev1c",
+   "title": "Pivot1C: Невский, 2025-02, Revenue 1C (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Клиника Невский",
+   "period": "2025-02",
+   "measure": "Revenue 1C",
+   "expected": {
+    "corrected": 33505000
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.corrected_c01.2025-02.pbt",
+   "title": "Pivot1C: Невский, 2025-02, Profit Before Tax (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Клиника Невский",
+   "period": "2025-02",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "corrected": 6118115.52
+   },
+   "tol": 0.01
+  },
+  {
+   "id": "pivot1c.corrected_c01.2025-03.rev1c",
+   "title": "Pivot1C: Невский, 2025-03, Revenue 1C (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Клиника Невский",
+   "period": "2025-03",
+   "measure": "Revenue 1C",
+   "expected": {
+    "corrected": 32106500
+   },
+   "tol": 0
+  },
+  {
+   "id": "pivot1c.corrected_c01.2025-03.pbt",
+   "title": "Pivot1C: Невский, 2025-03, Profit Before Tax (corrected)",
+   "kind": "pivot_cell",
+   "sheet": "Pivot1C",
+   "row": "Клиника Невский",
+   "period": "2025-03",
+   "measure": "Profit Before Tax",
+   "expected": {
+    "corrected": 5080771.74
+   },
+   "tol": 0.01
+  }
+ ]
+}

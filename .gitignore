@@ -1,0 +1,8 @@
+.venv/
+.venv */
+__pycache__/
+*.pyc
+excel/reconciliation*.xlsx
+clinic_recon.xlsx
+data/answer_key/
+data/answer_key_v2/

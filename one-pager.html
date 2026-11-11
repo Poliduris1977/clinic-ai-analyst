@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AI-���������������� ������ �������� ������������: ������������ ���� ���������� ����������������</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>:root{color-scheme:light dark}body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem}table{border-collapse:collapse;display:block;overflow-x:auto}th,td{border:1px solid #8885;padding:.35rem .6rem;vertical-align:top}code{background:#8882;padding:0 .25em;border-radius:3px}a{color:#0b6bcb}@media(prefers-color-scheme:dark){a{color:#6cb4ff}}h1{font-size:1.6rem}h2{margin-top:1.8rem}</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AI-���������������� ������ �������� ������������:
+������������ ���� ���������� ����������������</h1>
+</header>
+<h1
+id="ai-аналитик-для-сети-клиник-проект-на-одной-странице">AI-аналитик
+для сети клиник: проект на одной странице</h1>
+<p><strong>Управленческая отчётность · BI · ИИ-агент</strong> ·
+Репозиторий: <a
+href="https://github.com/Poliduris1977/clinic-ai-analyst">github.com/Poliduris1977/clinic-ai-analyst</a>
+· Дашборд онлайн: <a
+href="https://poliduris1977.github.io/clinic-ai-analyst/">poliduris1977.github.io/clinic-ai-analyst</a></p>
+<h2 id="что-это">Что это</h2>
+<p>Рабочая модель месячного цикла финансового аналитика на вымышленной
+сети из 3 клиник и 5 направлений (синтетические данные, 2025 год, 66 411
+завершённых визитов, выручка 825,2 млн ₽): сверка ERP и 1С, P&amp;L и
+факторный анализ, ДДС со стрессом, врачи, LTV, прогноз, дашборд,
+SQL-слой, Excel-трек (Power Query и Power Pivot), ИИ-агент, регламент
+закрытия месяца. Каждое число воспроизводится скриптом и проверяется.
+Данные синтетические: цифры показывают метод, а не реальную
+эффективность бизнеса.</p>
+<h2 id="что-показали-данные">Что показали данные</h2>
+<ul>
+<li><strong>Прибыль</strong> до налога 158,0 млн ₽: на 21,5 млн (12%)
+ниже плана. Выручка ниже плана на 39,7 млн, расходы ниже плана на 18,2
+млн покрыли недобор лишь частично.</li>
+<li><strong>Валовая маржа</strong> на 23,3 млн ниже плана. Больше всего
+повлияли «объём» (−18,3 млн) и скидки (−12,4 млн). Вывод «скидки не
+окупились» данные не подтверждают: связи скидок с потоком пациентов в
+них нет.</li>
+<li><strong>Деньги:</strong> остаток на конец года 216,0 млн ₽ (план
+251,8), минимум года 16,6 млн ₽ 10 января. Даже при задержке страховых
+на 90 дней сеть в целом не уходит в разрыв; слабее всех клиника
+C03.</li>
+<li><strong>Прогноз</strong> I квартала 2026: 322,6 млн ₽ (коридор
+257–388). По косметологии, пластике и лазерной коррекции он ненадёжен
+(ошибка отката 39%, 78%, 50%), а это 49% прогноза. Для таких направлений
+прогноз по тренду не подходит как план: тренд не видит ни мощность
+(число врачей), ни причины вроде маркетинга, поэтому по ним нужен
+прогноз по врачам с графиком найма и календарём маркетинга.</li>
+</ul>
+<h2
+id="гипотезы-для-руководства-из-синтетических-данных-не-факты-о-реальной-сети-четыре-из-них-подробно-на-первой-вкладке-дашборда">Гипотезы
+для руководства (из синтетических данных, не факты о реальной сети;
+четыре из них подробно на первой вкладке дашборда)</h2>
+<ul>
+<li><strong>Скидки без плана.</strong> Скидки года, 12,4 млн ₽, это
+почти 1,5% прайса; скидка 5–15% стоит в 21% позиций. Фактор «скидки» в
+плане равен всем скидкам года, то есть плана скидок не было.
+Подтверждено данными. Вариант решения: бюджет скидок по направлениям и
+правила согласования, решает коммерческий директор. Не проверено: растёт
+ли число повторных визитов у пациентов со скидкой.</li>
+<li><strong>Зависимость от врачей.</strong> Десять врачей из 43 дают
+38,6% выручки. Один из врачей пластики принёс 10,7 млн ₽ с сентября по
+декабрь (около 20% направления за эти месяцы), а в ноябре только 0,6
+млн. Подтверждено данными; причину провала в данных нет. Решает
+медицинский директор.</li>
+<li><strong>Потери записи.</strong> Отмены 7,0% и неявки 3,1% (вместе 7
+479 визитов). Верхняя оценка потерь около 92 млн ₽ (число визитов ×
+средняя выручка на визит); возврат 10–20% напоминаниями и листом
+ожидания это допущение, а не расчёт. Одинаковые доли по клиникам признак
+синтетики.</li>
+<li><strong>Перекрёстные продажи.</strong> 94,7% пациентов за год ходили
+в одно направление; 5,1% ходили в два и дают 11,8% выручки (55 тыс. ₽ на
+пациента против 22 тыс.). Это связь, а не причина.</li>
+<li><strong>Страховые и клиника C03.</strong> Доля ДМС в поступлениях у
+C03 14,9% против 12,0% у C02 и 9,1% у C01, поэтому задержка страховых
+бьёт по ней сильнее. Варианты: сдвиг даты выплат, кредитная линия, аванс
+от страховых; решает финансовый директор.</li>
+<li><strong>Бюджет 2026.</strong> Выручка IV квартала 287,2 млн ₽ против
+206,3 в среднем по кварталу. Бюджет от среднего занижен, от IV квартала
+×4 завышен, если есть сезонный пик; по одному году это не разделить,
+нужны сценарии и история за 2–3 года.</li>
+<li><strong>Каналы привлечения.</strong> LTV по каналам различается
+слабо; перекладывать бюджет по ценности канала нет оснований, нужна
+стоимость привлечения.</li>
+</ul>
+<h2 id="задачи-финансового-аналитика-и-где-это-в-проекте">Задачи
+финансового аналитика и где это в проекте</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Задача</th>
+<th>Статус</th>
+<th>Где посмотреть</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Сверка данных с бухгалтерией, контроль качества</td>
+<td>Есть</td>
+<td><a
+href="https://poliduris1977.github.io/clinic-ai-analyst/#quality">вкладка
+«Качество данных»</a>, <a
+href="https://github.com/Poliduris1977/clinic-ai-analyst/tree/main/src/reconcile">код
+сверки</a></td>
+</tr>
+<tr class="even">
+<td>P&amp;L, план-факт, факторный анализ</td>
+<td>Есть</td>
+<td><a
+href="https://poliduris1977.github.io/clinic-ai-analyst/#pnl">вкладка
+«P&amp;L и план-факт»</a></td>
+</tr>
+<tr class="odd">
+<td>Cash Flow, БДДС, ликвидность</td>
+<td>Есть, со стрессом</td>
+<td><a
+href="https://poliduris1977.github.io/clinic-ai-analyst/#cash">вкладка
+«Деньги»</a></td>
+</tr>
+<tr class="even">
+<td>Аналитика врачей, грейды</td>
+<td>Есть</td>
+<td><a
+href="https://poliduris1977.github.io/clinic-ai-analyst/#doctors">вкладка
+«Врачи»</a></td>
+</tr>
+<tr class="odd">
+<td>LTV, прогноз</td>
+<td>Есть (прогноз ориентировочный)</td>
+<td><a
+href="https://poliduris1977.github.io/clinic-ai-analyst/#patients">вкладка
+«Пациенты и прогноз»</a></td>
+</tr>
+<tr class="even">
+<td>SQL</td>
+<td>Есть, 9 запросов</td>
+<td><a
+href="https://github.com/Poliduris1977/clinic-ai-analyst/tree/main/sql">папка
+sql</a></td>
+</tr>
+<tr class="odd">
+<td>Excel: Power Query, Power Pivot</td>
+<td>Есть, на синтетике: 22 запроса, модель из 6 таблиц, 7 мер DAX;
+проверка снапшотов 93 из 93</td>
+<td><a
+href="https://github.com/Poliduris1977/clinic-ai-analyst/tree/main/excel">папка
+excel</a></td>
+</tr>
+<tr class="even">
+<td>Дашборды</td>
+<td>Есть, 8 вкладок, первая «Решения»</td>
+<td><a
+href="https://poliduris1977.github.io/clinic-ai-analyst/">дашборд</a></td>
+</tr>
+<tr class="odd">
+<td>ИИ-агент</td>
+<td>Каркас с проверкой чисел, не языковая модель</td>
+<td><a
+href="https://poliduris1977.github.io/clinic-ai-analyst/demo/Agent_2025.html">агент</a></td>
+</tr>
+<tr class="even">
+<td>Регламент закрытия месяца</td>
+<td>Есть (по процессу проекта)</td>
+<td><a
+href="https://github.com/Poliduris1977/clinic-ai-analyst/blob/main/docs/REGLAMENT.md">регламент</a></td>
+</tr>
+<tr class="odd">
+<td>KPI персонала, CRM, данные реальной 1С</td>
+<td>Нет</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="границы-проекта">Границы проекта</h2>
+<ul>
+<li>Данные синтетические; нет данных реальной 1С и CRM.</li>
+<li>KPI персонала, кроме врачей, не считаются.</li>
+<li>ИИ-агент это каркас (маршрутизатор и проверенные функции), а не
+языковая модель.</li>
+<li>Power Query и Power Pivot показаны на синтетике; проверка
+подтверждает значения снапшотов, а не обновление живой книги.</li>
+<li>Прогноз это тренд одного года без сезонности, а не бюджет.</li>
+<li>Нет в данных, но нужно запросить в реальной сети: прибыль по врачу и
+кабинету, загрузка кабинетов и оборудования, воронка (заявки,
+консультации, записи на операцию), стоимость привлечения по каналам,
+маркетинговый календарь.</li>
+</ul>
+<h2 id="как-обеспечена-достоверность">Как обеспечена достоверность</h2>
+<ul>
+<li>Контрольные цифры, независимый пересчёт на SQL (31 из 31), проверки
+сборки дашборда (87), тесты агента (44 из 44), проверка Excel-снапшотов
+(93 из 93), слепой тест сверки. Первый прогон слепого теста 10 из 14 с
+четырьмя ложными срабатываниями; после доработки правил 14 из 14, но
+этот результат не слепой. Показаны оба.</li>
+<li>Рядом с каждым выводом стоят «что не доказано» и «кто решает».</li>
+<li>Допущения записаны (<code>docs/ASSUMPTIONS.md</code>,
+<code>docs/KEY_DECISIONS.md</code>), процесс закрытия месяца описан в
+регламенте. Проект разработан с помощью ИИ-ассистента.</li>
+</ul>
+</body>
+</html>
